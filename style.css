@@ -292,6 +292,8 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   text-align: center;
   gap: 16px;
+  /* ADICIONADO: garante que os dois cards tenham a mesma altura */
+  height: 100%;
 }
 .professional-photo {
   width: 100%;
@@ -304,11 +306,30 @@ a:focus-visible, button:focus-visible {
     var(--marble-dim);
   border: 1px solid rgba(42, 43, 46, 0.12);
 }
-/* Substituir .professional-photo por uma <img> real de cada profissional quando disponível */
+/* ADICIONADO: foto real das profissionais dentro de .professional-photo */
+.professional-photo {
+  overflow: hidden;
+  /* ADICIONADO: impede que a foto estoure sobre o nome e o botão */
+  flex-shrink: 0;
+}
+.professional-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-md);
+}
 .professional-name {
   font-family: var(--font-display);
   font-size: 1.2rem;
-  color: var(--charcoal);
+  /* ALTERADO: mais contraste e peso para leitura sobre o fundo claro */
+  font-weight: 700;
+  color: #2D2424;
+}
+
+/* ADICIONADO: alinha os botões de WhatsApp na base dos dois cards */
+.professional-card .btn-whatsapp {
+  margin-top: auto;
 }
 
 /* INÍCIO: estilo do botão de WhatsApp das profissionais (adicionado) */
@@ -394,6 +415,23 @@ a:focus-visible, button:focus-visible {
 }
 /* Substituir .space-frame por uma <img> real do espaço físico quando disponível */
 
+/* ADICIONADO: endereço e caixa do mapa */
+.space-address {
+  color: var(--charcoal);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+.map-container {
+  margin-top: 48px;
+  width: 100%;
+  line-height: 0;
+}
+.map-container iframe {
+  width: 100%;
+  display: block;
+}
+
 /* ---------- 10. CTA FINAL ---------- */
 .final-cta {
   position: relative;
@@ -459,6 +497,12 @@ a:focus-visible, button:focus-visible {
   color: var(--charcoal-soft);
 }
 
+/* ADICIONADO: endereço no rodapé */
+.footer-address {
+  max-width: 420px;
+  line-height: 1.5;
+}
+
 /* ==========================================================================
    RESPONSIVO — a partir daqui, ajustes para telas maiores (tablet/desktop).
    A base acima já é mobile-first.
@@ -478,3 +522,4 @@ a:focus-visible, button:focus-visible {
 @media (min-width: 640px) and (max-width: 859px) {
   .service-grid { grid-template-columns: repeat(2, 1fr); }
 }
+

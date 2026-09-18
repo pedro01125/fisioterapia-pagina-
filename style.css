@@ -316,7 +316,8 @@ a:focus-visible, button:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position:cover ;
+  display: block;
   border-radius: var(--radius-md);
 }
 .professional-name {
@@ -522,4 +523,3 @@ a:focus-visible, button:focus-visible {
 @media (min-width: 640px) and (max-width: 859px) {
   .service-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
